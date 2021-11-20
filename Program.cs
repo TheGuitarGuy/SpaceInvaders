@@ -15,11 +15,31 @@ namespace cse210_batter_csharp
 
             // Bricks
             cast["bricks"] = new List<Actor>();
+            int x_position = 5;
+            int y_position = 0;
+            for (int i = 0; i < 100; i++)
+            {
 
-            // TODO: Add your bricks here
+                if (x_position > 800)
+                {
+                    x_position = 5;
+                    y_position += 29;
+                }
+                else
+                {
+                    Brick brick = new Brick(x_position, y_position);
+                    cast["bricks"].Add(brick);
+                    x_position += 53;
+                }
+            }
 
             // The Ball (or balls if desired)
             cast["balls"] = new List<Actor>();
+            int x = 600;
+            int y = 500;
+            Ball ball = new Ball(x, y);
+            cast["balls"].Add(ball);
+
 
             // TODO: Add your ball here
 
@@ -40,10 +60,17 @@ namespace cse210_batter_csharp
             script["input"] = new List<Action>();
             script["update"] = new List<Action>();
 
-            DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
-            script["output"].Add(drawActorsAction);
+
+            // HandleOffScreen bill = new HandleOffScreen();
+            // script["update"].Add(bill);
 
             // TODO: Add additional actions here to handle the input, move the actors, handle collisions, etc.
+            MoveActorsAction action = new MoveActorsAction();
+            script["update"].Add(action);
+            HandleOffScreen collision = new HandleOffScreen();
+            script["update"].Add(collision);
+            DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
+            script["output"].Add(drawActorsAction);
 
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Batter", Constants.FRAME_RATE);
