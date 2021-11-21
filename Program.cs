@@ -41,10 +41,16 @@ namespace cse210_batter_csharp
             cast["balls"].Add(ball);
 
 
+
             // TODO: Add your ball here
 
             // The paddle
             cast["paddle"] = new List<Actor>();
+            cast["paddle"] = new List<Actor>();
+
+            Paddle paddle = new Paddle(Constants.PADDLE_X, Constants.PADDLE_Y);
+            cast["paddle"].Add(paddle);
+
 
             // TODO: Add your paddle here
 
@@ -69,9 +75,14 @@ namespace cse210_batter_csharp
             script["update"].Add(action);
             HandleOffScreen collision = new HandleOffScreen();
             script["update"].Add(collision);
+            HandleCollisionsAction brickCollision = new HandleCollisionsAction();
+            script["update"].Add(brickCollision);
+            ControlActorsAction movePaddle = new ControlActorsAction();
+            script["input"].Add(movePaddle);
             DrawActorsAction drawActorsAction = new DrawActorsAction(outputService);
             script["output"].Add(drawActorsAction);
 
+            
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Batter", Constants.FRAME_RATE);
             audioService.StartAudio();

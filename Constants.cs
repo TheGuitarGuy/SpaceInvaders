@@ -21,6 +21,8 @@ namespace cse210_batter_csharp
 
         public const string SOUND_START = "./Assets/start.wav";
         public const string SOUND_BOUNCE = "./Assets/boing.wav";
+
+        // public const string SOUND_BOUNCE_OFF_BRICK = "./Assets/"
         public const string SOUND_OVER = "./Assets/over.wav";
 
         public const int BALL_X = MAX_X / 2;
