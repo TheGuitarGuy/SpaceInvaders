@@ -19,6 +19,10 @@ namespace cse210_batter_csharp
         public const string IMAGE_PADDLE = "./Assets/bat.png";
         public const string IMAGE_BALL = "./Assets/ball.png";
 
+        public const string  IMAGE_SHIP = "./Assets/spaceship.png";
+
+        public const string IMAGE_LAZER = "./Assets/lazer.png";
+
         public const string SOUND_START = "./Assets/start.wav";
         public const string SOUND_BOUNCE = "./Assets/boing.wav";
 

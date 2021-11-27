@@ -23,6 +23,14 @@ namespace cse210_batter_csharp
             {
                 paddle.SetVelocity(new Point(Constants.PADDLE_SPEED, 0));
             }
+            else if(_input.IsUpPressed())
+            {
+                paddle.SetVelocity(new Point(0,Constants.PADDLE_SPEED * -1));
+            }
+            else if(_input.IsDownPressed())
+            {
+                paddle.SetVelocity(new Point(0, Constants.PADDLE_SPEED));
+            }
             else
             {
                 paddle.SetVelocity(new Point(0, 0));

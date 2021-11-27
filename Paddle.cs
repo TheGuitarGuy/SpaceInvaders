@@ -9,9 +9,9 @@ namespace cse210_batter_csharp
         {
             SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
-            SetWidth(Constants.PADDLE_WIDTH);
-            SetHeight(Constants.PADDLE_HEIGHT);
-            SetImage(Constants.IMAGE_PADDLE);
+            SetWidth(5);
+            SetHeight(5);
+            SetImage(Constants.IMAGE_SHIP);
             GetImage();
         }
     } 
