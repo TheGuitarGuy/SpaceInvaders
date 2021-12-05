@@ -9,11 +9,11 @@ namespace cse210_batter_csharp
     {
         public Laser(int x, int y)
         {
-            SetVelocity(new Point(5, 10));
+            SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
-            SetHeight(5);
-            SetWidth(10);
-            SetImage(Constants.IMAGE_LAZER);
+            SetHeight(2);
+            SetWidth(1);
+            SetImage(Constants.IMAGE_LASER);
             GetImage();
         }
     }

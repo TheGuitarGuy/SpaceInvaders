@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using cse210_batter_csharp.Casting;
 using cse210_batter_csharp.Services;
+using Raylib_cs;
 
 namespace cse210_batter_csharp
 {
@@ -10,6 +11,7 @@ namespace cse210_batter_csharp
 
         private PhysicsService _physics = new PhysicsService();
         private InputService _input = new InputService();
+
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
@@ -34,6 +36,23 @@ namespace cse210_batter_csharp
             else
             {
                 paddle.SetVelocity(new Point(0, 0));
+            }
+
+            Actor laser = cast["lasers"][0];
+            
+            if(_input.IsSpaceDown())
+            {
+                laser.SetVelocity(new Point(0, -10));
+                int x = paddle.GetLeftEdge();
+                int y = paddle.GetRightEdge();
+                int z = paddle.GetBottomEdge();
+                int w = paddle.GetTopEdge();
+                int laser_x = y - x;
+                int laser_y = z - w;
+                cast["lasers"] = new List<Actor>();
+                // int x = 600;
+                // int y = 500;
+                cast["lasers"].Add(laser);
             }
         }
     }

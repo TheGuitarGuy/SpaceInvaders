@@ -9,9 +9,9 @@ namespace cse210_batter_csharp
         {
             SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
-            SetHeight(Constants.BRICK_HEIGHT);
-            SetWidth(Constants.BRICK_WIDTH);
-            SetImage("Assets/brick-2.png");
+            SetHeight(30);
+            SetWidth(40);
+            SetImage("Assets/alien.png");
             GetImage();
         }
     }

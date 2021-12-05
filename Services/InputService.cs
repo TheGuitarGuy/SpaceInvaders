@@ -36,6 +36,10 @@ namespace cse210_batter_csharp.Services
         {
             return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_DOWN);
         }
+        public bool IsSpaceDown()
+        {
+            return Raylib.IsKeyDown(Raylib_cs.KeyboardKey.KEY_SPACE);
+        }
 
         /// <summary>
         /// Gets the direction asked for by the current key presses
