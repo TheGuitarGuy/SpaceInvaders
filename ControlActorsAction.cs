@@ -39,6 +39,8 @@ namespace cse210_batter_csharp
             }
 
             Actor laser = cast["lasers"][0];
+            int y_laser = laser.GetY();
+            int x_ship = paddle.GetX();
             
             if(_input.IsSpaceDown())
             {
@@ -53,7 +55,16 @@ namespace cse210_batter_csharp
                 // int x = 600;
                 // int y = 500;
                 cast["lasers"].Add(laser);
+                laser.SetImage(Constants.IMAGE_LASER);
             }
+            else if(y_laser > 499)
+            {
+                laser.SetPosition(new Point (x_ship, 500));
+                laser.SetVelocity(new Point (0,0));
+                laser.SetImage(Constants.NULL_IMAGE);
+                
+            }
+            
         }
     }
 }

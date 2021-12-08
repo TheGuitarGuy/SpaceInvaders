@@ -81,6 +81,8 @@ namespace cse210_batter_csharp
             script["output"].Add(drawActorsAction);
             HandleOffScreen collision = new HandleOffScreen();
             script["update"].Add(collision);
+            HandleCollisionsAction collision1 = new HandleCollisionsAction();
+            script["update"].Add(collision1);
 
 
             // Start up the game

@@ -7,10 +7,10 @@ namespace cse210_batter_csharp
     {
         public Brick(int x, int y)
         {
-            SetVelocity(new Point(0, 0));
+            SetVelocity(new Point(2, 0));
             SetPosition(new Point(x, y));
             SetHeight(30);
-            SetWidth(40);
+            SetWidth(60);
             SetImage("Assets/alien.png");
             GetImage();
         }
