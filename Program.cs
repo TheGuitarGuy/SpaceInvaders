@@ -3,6 +3,7 @@ using cse210_batter_csharp.Services;
 using cse210_batter_csharp.Casting;
 using cse210_batter_csharp.Scripting;
 using System.Collections.Generic;
+using Raylib_cs; 
 
 namespace cse210_batter_csharp
 {
@@ -11,29 +12,41 @@ namespace cse210_batter_csharp
         static void Main(string[] args)
         {
             
+            
             // Create the cast
             Dictionary<string, List<Actor>> cast = new Dictionary<string, List<Actor>>();
-            
+            double time = Raylib.GetTime();
+            Random randomNumber = new Random();
 
             // Bricks
             cast["bricks"] = new List<Actor>();
             int x_position = 5;
             int y_position = 0;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 30; i++)
             {
+                int randint = randomNumber.Next(1,4);
+                int randomVelocity = randomNumber.Next(4, 12);
                 if (x_position > 800)
                 {
                     x_position = 5;
                     y_position += 50;
+                }
+                else if (randint == 4 || randint == 2 || randint == 3)
+                {
+                    Brick brick = new Brick(x_position, y_position);
+                    cast["bricks"].Add(brick);
+                    x_position += 150;
+                    brick.SetVelocity(new Point (0, randomVelocity));
                 }
                 else
                 {
                     Brick brick = new Brick(x_position, y_position);
                     cast["bricks"].Add(brick);
                     x_position += 100;
+                    brick.SetVelocity(new Point (0, randomVelocity));
                 }
             }
-
+            
             // The Ball (or balls if desired)
 
             // TODO: Add your ball here
@@ -42,14 +55,14 @@ namespace cse210_batter_csharp
             cast["paddle"] = new List<Actor>();
             cast["paddle"] = new List<Actor>();
 
-            Paddle paddle = new Paddle(Constants.PADDLE_X, Constants.PADDLE_Y);
+            Paddle paddle = new Paddle(250, 550);
             cast["paddle"].Add(paddle);
 
             int shipPosition_x = paddle.GetX();
             int shipPosition_y = paddle.GetY();
 
             cast["lasers"] = new List<Actor>();
-            Laser laser = new Laser(shipPosition_x +20, shipPosition_y);
+            Laser laser = new Laser(shipPosition_x, shipPosition_y);
             cast["lasers"].Add(laser);
 
             // TODO: Add your paddle here
@@ -83,6 +96,8 @@ namespace cse210_batter_csharp
             script["update"].Add(collision);
             HandleCollisionsAction collision1 = new HandleCollisionsAction();
             script["update"].Add(collision1);
+            AddEnemies enemies = new AddEnemies();
+            script["output"].Add(enemies);
 
 
             // Start up the game

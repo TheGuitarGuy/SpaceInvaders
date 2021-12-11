@@ -88,6 +88,10 @@ namespace cse210_batter_csharp.Services
             Raylib_cs.Texture2D texture = _textures[image];
             Raylib.DrawTexture(texture, x, y, Raylib_cs.Color.WHITE);
         }
+        public void GetTime()
+        {
+            Raylib.GetTime();
+        }
 
         /// <summary>
         /// Displays text on the screen at the provided coordinates.
