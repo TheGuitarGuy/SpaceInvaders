@@ -63,20 +63,9 @@ namespace cse210_batter_csharp
             {
                 bool endCollision = _physics.IsCollision(paddle, brick);
                 bool collision = _physics.IsCollision(laser, brick);
-                if (collision && randomNumber == 2)
+                if (collision)
                 {
-                    _audio.PlaySound(Constants.SOUND_BOUNCE);
-
-                    brickToRemove = brick;
-
-                    Point reverseVelocity = laser.GetVelocity().Reverse();
-                    laser.SetVelocity(new Point (0,0));
-                    laser.SetImage(Constants.NULL_IMAGE);
-                    laser.SetPosition(new Point (x_ship,y_ship));
-                }
-                else if (collision && randomNumber == 1)
-                {
-                    _audio.PlaySound(Constants.SOUND_BOUNCE);
+                    _audio.PlaySound(Constants.SOUND_EXPLODE);
 
                     brickToRemove = brick;
 
@@ -87,8 +76,9 @@ namespace cse210_batter_csharp
                 }
                 else if (endCollision)
                 {
-                    _audio.PlaySound(Constants.SOUND_OVER);
                     paddle.SetImage(Constants.NULL_IMAGE);
+                    brick.SetImage(Constants.NULL_IMAGE);
+                    _audio.PlaySound(Constants.SOUND_OVER);
                 }
             }
             if (brickToRemove != null)

@@ -10,7 +10,7 @@ namespace cse210_batter_csharp
             SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
             SetHeight(30);
-            SetWidth(60);
+            SetWidth(100);
             SetImage("Assets/alien.png");
             GetImage();
         }

@@ -21,16 +21,19 @@ namespace cse210_batter_csharp
         public const string IMAGE_PADDLE = "./Assets/bat.png";
         public const string IMAGE_BALL = "./Assets/ball.png";
 
-        public const string  IMAGE_SHIP = "./Assets/spaceship.png";
+        public const string IMAGE_SHIP = "./Assets/spaceship.png";
+
+        public const string SOUND_AMAZING = "./Assets/never.mp3";
 
         public const string IMAGE_LASER = "./Assets/laser.png";
 
         public const string SOUND_START = "./Assets/start.wav";
         public const string SOUND_BOUNCE = "./Assets/boing.wav";
 
+        public const string SOUND_EXPLODE = "./Assets/Bomb.mp3";
+
         // public const string SOUND_BOUNCE_OFF_BRICK = "./Assets/"
         public const string SOUND_OVER = "./Assets/over.wav";
-
         public const int BALL_X = MAX_X / 2;
         public const int BALL_Y = MAX_Y - 125;
 

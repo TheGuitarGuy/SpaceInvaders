@@ -12,8 +12,8 @@ namespace cse210_batter_csharp
             SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
             SetImage(Constants.IMAGE_LASER);
-            SetHeight(0);
-            SetWidth(0);
+            SetHeight(40);
+            SetWidth(20);
             GetImage();
         }
     }

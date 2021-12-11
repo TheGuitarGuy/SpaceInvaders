@@ -25,14 +25,14 @@ namespace cse210_batter_csharp
             {
                 paddle.SetVelocity(new Point(Constants.PADDLE_SPEED, 0));
             }
-            else if(_input.IsUpPressed())
-            {
-                paddle.SetVelocity(new Point(0,Constants.PADDLE_SPEED * -1));
-            }
-            else if(_input.IsDownPressed())
-            {
-                paddle.SetVelocity(new Point(0, Constants.PADDLE_SPEED));
-            }
+            // else if(_input.IsUpPressed())
+            // {
+            //     paddle.SetVelocity(new Point(0,Constants.PADDLE_SPEED * -1));
+            // }
+            // else if(_input.IsDownPressed())
+            // {
+            //     paddle.SetVelocity(new Point(0, Constants.PADDLE_SPEED));
+            // }
             else
             {
                 paddle.SetVelocity(new Point(0, 0));
@@ -45,7 +45,7 @@ namespace cse210_batter_csharp
             
             if(_input.IsSpaceDown())
             {
-                laser.SetVelocity(new Point(0, -10));
+                laser.SetVelocity(new Point(0, -30));
                 int x = paddle.GetLeftEdge();
                 int y = paddle.GetRightEdge();
                 int z = paddle.GetBottomEdge();
@@ -60,7 +60,7 @@ namespace cse210_batter_csharp
             }
             else if(y_laser > 525)
             {
-                laser.SetPosition(new Point (x_ship, y_ship));
+                laser.SetPosition(new Point (x_ship+20, y_ship));
                 laser.SetVelocity(new Point (0,0));
                 laser.SetImage(Constants.NULL_IMAGE);
                 

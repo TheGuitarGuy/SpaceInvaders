@@ -58,8 +58,8 @@ namespace cse210_batter_csharp
             Paddle paddle = new Paddle(250, 550);
             cast["paddle"].Add(paddle);
 
-            int shipPosition_x = paddle.GetX();
-            int shipPosition_y = paddle.GetY();
+            int shipPosition_x = paddle.GetX() -20;
+            int shipPosition_y = paddle.GetY()-20;
 
             cast["lasers"] = new List<Actor>();
             Laser laser = new Laser(shipPosition_x, shipPosition_y);
@@ -103,7 +103,7 @@ namespace cse210_batter_csharp
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Space Invaders", Constants.FRAME_RATE);
             audioService.StartAudio();
-            audioService.PlaySound(Constants.SOUND_START);
+            audioService.PlaySound(Constants.SOUND_AMAZING);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();
