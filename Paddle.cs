@@ -9,10 +9,10 @@ namespace cse210_batter_csharp
         {
             SetVelocity(new Point(0, 0));
             SetPosition(new Point(x, y));
-            SetWidth(5);
-            SetHeight(5);
+            SetWidth(30);
+            SetHeight(40);
             SetImage(Constants.IMAGE_SHIP);
             GetImage();
         }
-    } 
+    }
 }

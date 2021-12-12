@@ -22,7 +22,7 @@ namespace cse210_batter_csharp
             cast["bricks"] = new List<Actor>();
             int x_position = 5;
             int y_position = 0;
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int randint = randomNumber.Next(1,4);
                 int randomVelocity = randomNumber.Next(4, 12);
@@ -103,7 +103,7 @@ namespace cse210_batter_csharp
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Space Invaders", Constants.FRAME_RATE);
             audioService.StartAudio();
-            audioService.PlaySound(Constants.SOUND_AMAZING);
+            audioService.PlaySound(Constants.SOUND_START);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();

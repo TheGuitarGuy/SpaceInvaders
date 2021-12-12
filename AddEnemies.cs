@@ -16,13 +16,45 @@ namespace cse210_batter_csharp
             double time = Raylib.GetTime();
             Random randomNumber = new Random();
             // Bricks
-            if (time > 30 && time < 30.05)
+            if(time > 20 && time < 20.05)
             {
                 cast["bricks1"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
-                for (int i = 0; i < 40; i++)
+                for (int i = 0; i < 10; i++)
                 {
+                    int randint = randomNumber.Next(1, 4);
+                    int randomXVelocity = randomNumber.Next(-2,2);
+                    int randomVelocity = randomNumber.Next(4, 12);
+                    if (x_position > 800)
+                    {
+                        x_position = 5;
+                        y_position += 50;
+                    }
+                    else if (randint == 4 || randint == 2 || randint == 3)
+                    {
+                        Brick brick = new Brick(x_position, y_position);
+                        cast["bricks"].Add(brick);
+                        x_position += 165;
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                    }
+                    else
+                    {
+                        Brick brick = new Brick(x_position, y_position);
+                        cast["bricks"].Add(brick);
+                        x_position += 100;
+                        brick.SetVelocity(new Point(0, randomVelocity));
+                    }
+                }
+            }
+            else if (time > 30 && time < 30.05)
+            {
+                cast["bricks1"] = new List<Actor>();
+                int x_position = 5;
+                int y_position = 0;
+                for (int i = 0; i < 20; i++)
+                {
+                    int randomXVelocity = randomNumber.Next(-2,2);
                     int randint = randomNumber.Next(1, 4);
                     int randomVelocity = randomNumber.Next(4, 12);
                     if (x_position > 800)
@@ -35,7 +67,7 @@ namespace cse210_batter_csharp
                         Brick brick = new Brick(x_position, y_position);
                         cast["bricks"].Add(brick);
                         x_position += 165;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
@@ -51,8 +83,9 @@ namespace cse210_batter_csharp
                 cast["bricks2"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 20; i++)
                 {
+                    int randomXVelocity = randomNumber.Next(-4,4);
                     int randint = randomNumber.Next(1, 4);
                     int randomVelocity = randomNumber.Next(4, 12);
                     if (x_position > 800)
@@ -65,7 +98,7 @@ namespace cse210_batter_csharp
                         Brick brick = new Brick(x_position, y_position);
                         cast["bricks"].Add(brick);
                         x_position += 150;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
@@ -81,8 +114,9 @@ namespace cse210_batter_csharp
                 cast["bricks2"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
-                for (int i = 0; i < 70; i++)
+                for (int i = 0; i < 30; i++)
                 {
+                    int randomXVelocity = randomNumber.Next(-6,6);
                     int randint = randomNumber.Next(1, 4);
                     int randomVelocity = randomNumber.Next(4, 12);
                     if (x_position > 800)
@@ -96,14 +130,14 @@ namespace cse210_batter_csharp
                         Brick brick = new Brick(x_position, y_position);
                         cast["bricks"].Add(brick);
                         x_position += randomSpacing;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
                         Brick brick = new Brick(x_position, y_position);
                         cast["bricks"].Add(brick);
                         x_position += 100;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                 }
             }
@@ -115,6 +149,7 @@ namespace cse210_batter_csharp
                 int randEnemies = randomNumber.Next(120, 150);
                 for (int i = 0; i < randEnemies; i++)
                 {
+                    int randomXVelocity = randomNumber.Next(-6,6);
                     int randint = randomNumber.Next(1, 4);
                     int randomVelocity = randomNumber.Next(4, 16);
                     if (x_position > 800)
@@ -128,7 +163,7 @@ namespace cse210_batter_csharp
                         Brick brick = new Brick(x_position, y_position);
                         cast["bricks"].Add(brick);
                         x_position += randomSpacing;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {

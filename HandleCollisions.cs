@@ -8,6 +8,7 @@ namespace cse210_batter_csharp
 {
     public class HandleCollisionsAction : Action
     {
+        public bool isOver = false;
 
         private PhysicsService _physics = new PhysicsService();
         private AudioService _audio = new AudioService();
@@ -46,7 +47,7 @@ namespace cse210_batter_csharp
         //     // }
         // }
 
-        private void CollisionLogic(Dictionary<string, List<Actor>> cast)
+        private bool CollisionLogic(Dictionary<string, List<Actor>> cast)
         {
             // Actor brick = cast["bricks"][0];
             Actor paddle = cast["paddle"][0];
@@ -66,25 +67,27 @@ namespace cse210_batter_csharp
                 if (collision)
                 {
                     _audio.PlaySound(Constants.SOUND_EXPLODE);
-
                     brickToRemove = brick;
-
-                    Point reverseVelocity = laser.GetVelocity().Reverse();
                     laser.SetVelocity(new Point (0,0));
                     laser.SetImage(Constants.NULL_IMAGE);
                     laser.SetPosition(new Point (x_ship,y_ship));
                 }
                 else if (endCollision)
                 {
+                    paddle.SetHeight(0);
+                    paddle.SetWidth(0);
                     paddle.SetImage(Constants.NULL_IMAGE);
                     brick.SetImage(Constants.NULL_IMAGE);
                     _audio.PlaySound(Constants.SOUND_OVER);
+                    laser.SetHeight(0);
+                    laser.SetWidth(0);
                 }
             }
             if (brickToRemove != null)
             {
                 cast["bricks"].Remove(brickToRemove);
             }
+            return isOver;
         }
     }
 }

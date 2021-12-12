@@ -45,7 +45,7 @@ namespace cse210_batter_csharp
             
             if(_input.IsSpaceDown())
             {
-                laser.SetVelocity(new Point(0, -30));
+                laser.SetVelocity(new Point(0, -40));
                 int x = paddle.GetLeftEdge();
                 int y = paddle.GetRightEdge();
                 int z = paddle.GetBottomEdge();
@@ -60,10 +60,9 @@ namespace cse210_batter_csharp
             }
             else if(y_laser > 525)
             {
-                laser.SetPosition(new Point (x_ship+20, y_ship));
+                laser.SetPosition(new Point (x_ship+20, y_ship+20));
                 laser.SetVelocity(new Point (0,0));
                 laser.SetImage(Constants.NULL_IMAGE);
-                
             }
             
         }

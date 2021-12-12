@@ -15,9 +15,11 @@ namespace cse210_batter_csharp
     /// </summary>
     public class Director
     {
-        private bool _keepPlaying = true;
+        public bool _keepPlaying = true;
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
+
+        
 
         public Director(Dictionary<string, List<Actor>> cast, Dictionary<string, List<Action>> script)
         {
