@@ -103,7 +103,7 @@ namespace cse210_batter_csharp
             // Start up the game
             outputService.OpenWindow(Constants.MAX_X, Constants.MAX_Y, "Space Invaders", Constants.FRAME_RATE);
             audioService.StartAudio();
-            audioService.PlaySound(Constants.SOUND_START);
+            audioService.PlaySound(Constants.SOUND_AMAZING);
 
             Director theDirector = new Director(cast, script);
             theDirector.Direct();
