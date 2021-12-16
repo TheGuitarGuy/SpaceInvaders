@@ -15,56 +15,47 @@ namespace cse210_batter_csharp
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            Actor paddle = cast["paddle"][0];
+            //Controls ship x movement from left to right
+            Actor ship = cast["ship"][0];
             if (_input.IsLeftPressed())
             {
-                paddle.SetVelocity(new Point(Constants.PADDLE_SPEED * -1, 0));
+                ship.SetVelocity(new Point(15 * -1, 0));
             }
 
             else if (_input.IsRightPressed())
             {
-                paddle.SetVelocity(new Point(Constants.PADDLE_SPEED, 0));
+                ship.SetVelocity(new Point(15, 0));
             }
-            // else if(_input.IsUpPressed())
-            // {
-            //     paddle.SetVelocity(new Point(0,Constants.PADDLE_SPEED * -1));
-            // }
-            // else if(_input.IsDownPressed())
-            // {
-            //     paddle.SetVelocity(new Point(0, Constants.PADDLE_SPEED));
-            // }
             else
             {
-                paddle.SetVelocity(new Point(0, 0));
+                ship.SetVelocity(new Point(0, 0));
             }
 
             Actor laser = cast["lasers"][0];
             int y_laser = laser.GetY();
-            int x_ship = paddle.GetX();
-            int y_ship = paddle.GetY();
-            
+            int x_ship = ship.GetX();
+            int y_ship = ship.GetY();
+            //Shows laser when space is pressed
             if(_input.IsSpaceDown())
             {
                 laser.SetVelocity(new Point(0, -40));
-                int x = paddle.GetLeftEdge();
-                int y = paddle.GetRightEdge();
-                int z = paddle.GetBottomEdge();
-                int w = paddle.GetTopEdge();
+                int x = ship.GetLeftEdge();
+                int y = ship.GetRightEdge();
+                int z = ship.GetBottomEdge();
+                int w = ship.GetTopEdge();
                 int laser_x = y - x;
                 int laser_y = z - w;
                 cast["lasers"] = new List<Actor>();
-                // int x = 600;
-                // int y = 500;
                 cast["lasers"].Add(laser);
                 laser.SetImage(Constants.IMAGE_LASER);
             }
+
             else if(y_laser > 525)
             {
                 laser.SetPosition(new Point (x_ship+20, y_ship+20));
                 laser.SetVelocity(new Point (0,0));
                 laser.SetImage(Constants.NULL_IMAGE);
             }
-            
         }
     }
 }

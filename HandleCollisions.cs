@@ -15,77 +15,46 @@ namespace cse210_batter_csharp
 
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
-            // BounceLogic(cast);
             CollisionLogic(cast);
         }
-
-        // private void BounceLogic(Dictionary<string, List<Actor>> cast)
-        // {
-        //     // Actor ball = cast["balls"][0];
-        //     Actor paddle = cast["paddle"][0];
-
-        //     // bool bounce = _physics.IsCollision(paddle, ball);
-        //     var rand = new Random();
-        //     int random = rand.Next(2);
-        //     // if (bounce)
-        //     // {
-        //     //     _audio.PlaySound(Constants.SOUND_BOUNCE);
-
-        //     //     Point reverseVelocity = ball.GetVelocity().Reverse();
-        //     //     Point newVelocity = new Point(reverseVelocity.GetX()*-1, reverseVelocity.GetY());
-
-        //     //     ball.SetVelocity(newVelocity);
-        //     // }
-        //     // else if(bounce)
-        //     // {
-        //     //     _audio.PlaySound(Constants.SOUND_BOUNCE);
-
-        //     //     // Point reverseVelocity = laser.GetVelocity().Reverse();
-        //     //     // Point newVelocity = new Point(reverseVelocity.GetX(), reverseVelocity.GetY());
-
-        //     //     // laser.SetVelocity(newVelocity);
-        //     // }
-        // }
-
         private bool CollisionLogic(Dictionary<string, List<Actor>> cast)
         {
-            // Actor brick = cast["bricks"][0];
-            Actor paddle = cast["paddle"][0];
+            Actor ship = cast["ship"][0];
             Actor laser = cast["lasers"][0];
-            List<Actor> bricks = cast["bricks"];
+            List<Actor> enemies = cast["enemies"];
 
-            Actor brickToRemove = null;
-            int x_ship = paddle.GetX() +10;
-            int y_ship = paddle.GetY();
+            Actor enemyToRemove = null;
+            int x_ship = ship.GetX() +10;
+            int y_ship = ship.GetY();
             Random random = new Random();
             int randomNumber = random.Next(0,2);
-
-            foreach (Actor brick in bricks)
+            //Check if laser collided with enemy
+            foreach (Actor enemy in enemies)
             {
-                bool endCollision = _physics.IsCollision(paddle, brick);
-                bool collision = _physics.IsCollision(laser, brick);
+                bool endCollision = _physics.IsCollision(ship, enemy);
+                bool collision = _physics.IsCollision(laser, enemy);
                 if (collision)
                 {
                     _audio.PlaySound(Constants.SOUND_EXPLODE);
-                    brickToRemove = brick;
+                    enemyToRemove = enemy;
                     laser.SetVelocity(new Point (0,0));
                     laser.SetImage(Constants.NULL_IMAGE);
                     laser.SetPosition(new Point (x_ship,y_ship));
                 }
                 else if (endCollision)
                 {
-                    paddle.SetHeight(0);
-                    paddle.SetWidth(0);
-                    paddle.SetImage(Constants.NULL_IMAGE);
-                    brick.SetImage(Constants.NULL_IMAGE);
+                    ship.SetHeight(0);
+                    ship.SetWidth(0);
+                    ship.SetImage(Constants.NULL_IMAGE);
+                    enemy.SetImage(Constants.NULL_IMAGE);
                     _audio.PlaySound(Constants.SOUND_OVER);
                     laser.SetHeight(0);
                     laser.SetWidth(0);
                 }
             }
-            if (brickToRemove != null)
+            if (enemyToRemove != null)
             {
-                cast["bricks"].Remove(brickToRemove);
+                cast["enemies"].Remove(enemyToRemove);
             }
             return isOver;
         }

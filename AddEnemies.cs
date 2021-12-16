@@ -10,15 +10,17 @@ namespace cse210_batter_csharp
     public class AddEnemies : Action
     {
         private AudioService _audio = new AudioService();
+
+        //Enemies are added on a set time interval with each wave getting progressively more difficult
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
+            //.05 difference allows for wave to be successful with current frame rate
 
             double time = Raylib.GetTime();
             Random randomNumber = new Random();
-            // Bricks
             if(time > 20 && time < 20.05)
             {
-                cast["bricks1"] = new List<Actor>();
+                cast["enemies1"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
                 for (int i = 0; i < 10; i++)
@@ -33,23 +35,23 @@ namespace cse210_batter_csharp
                     }
                     else if (randint == 4 || randint == 2 || randint == 3)
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 165;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 100;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        enemy.SetVelocity(new Point(0, randomVelocity));
                     }
                 }
             }
             else if (time > 30 && time < 30.05)
             {
-                cast["bricks1"] = new List<Actor>();
+                cast["enemies1"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
                 for (int i = 0; i < 20; i++)
@@ -64,23 +66,23 @@ namespace cse210_batter_csharp
                     }
                     else if (randint == 4 || randint == 2 || randint == 3)
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 165;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 100;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        enemy.SetVelocity(new Point(0, randomVelocity));
                     }
                 }
             }
             else if (time > 60 && time < 60.05)
             {
-                cast["bricks2"] = new List<Actor>();
+                cast["enemies2"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
                 for (int i = 0; i < 20; i++)
@@ -95,23 +97,23 @@ namespace cse210_batter_csharp
                     }
                     else if (randint == 4 || randint == 2 || randint == 3)
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 150;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 100;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        enemy.SetVelocity(new Point(0, randomVelocity));
                     }
                 }
             }
             else if (time > 90 && time < 90.05)
             {
-                cast["bricks2"] = new List<Actor>();
+                cast["enemies2"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
                 for (int i = 0; i < 30; i++)
@@ -127,23 +129,23 @@ namespace cse210_batter_csharp
                     else if (randint == 4 || randint == 2 || randint == 3)
                     {
                         int randomSpacing = randomNumber.Next(100, 200);
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += randomSpacing;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 100;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                 }
             }
             else if (time > 120 && time < 120.05)
             {
-                cast["bricks2"] = new List<Actor>();
+                cast["enemies2"] = new List<Actor>();
                 int x_position = 5;
                 int y_position = 0;
                 int randEnemies = randomNumber.Next(120, 150);
@@ -160,17 +162,17 @@ namespace cse210_batter_csharp
                     else if (randint == 4 || randint == 2 || randint == 3)
                     {
                         int randomSpacing = randomNumber.Next(100, 300);
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += randomSpacing;
-                        brick.SetVelocity(new Point(randomXVelocity, randomVelocity));
+                        enemy.SetVelocity(new Point(randomXVelocity, randomVelocity));
                     }
                     else
                     {
-                        Brick brick = new Brick(x_position, y_position);
-                        cast["bricks"].Add(brick);
+                        Enemy enemy = new Enemy(x_position, y_position);
+                        cast["enemies"].Add(enemy);
                         x_position += 100;
-                        brick.SetVelocity(new Point(0, randomVelocity));
+                        enemy.SetVelocity(new Point(0, randomVelocity));
                     }
                 }
             }

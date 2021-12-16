@@ -10,7 +10,7 @@ namespace cse210_batter_csharp
         Actor _bottomEdge = new Actor();
         Actor _leftEdge = new Actor();
         Actor _rightEdge = new Actor();
-        Actor _brick = new Actor();
+        Actor _enemy = new Actor();
 
         public HandleOffScreen()
         {

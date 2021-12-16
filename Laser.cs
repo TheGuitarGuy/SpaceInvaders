@@ -7,6 +7,7 @@ namespace cse210_batter_csharp
 {
     public class Laser : Actor
     {
+        //Constructor for Laser
         public Laser(int x, int y)
         {
             SetVelocity(new Point(0, 0));

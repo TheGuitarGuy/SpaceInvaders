@@ -6,19 +6,16 @@ namespace cse210_batter_csharp
 {
     public class MoveActorsAction : Action
     {
+        //Moves the Actor
         public override void Execute(Dictionary<string, List<Actor>> cast)
         {
            foreach(List<Actor> group in cast.Values)
            {
-               foreach(Actor a in group)
+               foreach(Actor actor in group)
                {
-                   a.MoveNext();
+                   actor.MoveNext();
                }
            }
         }
-        // private void MoveActor(Actor b)
-        // {
-        //     int x = b.GetPosition().GetX();
-        // }
     }
 }
