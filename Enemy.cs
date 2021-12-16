@@ -5,6 +5,7 @@ namespace cse210_batter_csharp
 {
     public class Enemy : Actor
     {
+        //Constructor for enemy
         public Enemy(int x, int y)
         {
             SetVelocity(new Point(0, 0));
