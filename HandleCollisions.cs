@@ -24,10 +24,10 @@ namespace cse210_batter_csharp
             List<Actor> enemies = cast["enemies"];
 
             Actor enemyToRemove = null;
-            int x_ship = ship.GetX() +10;
+            int x_ship = ship.GetX() + 10;
             int y_ship = ship.GetY();
             Random random = new Random();
-            int randomNumber = random.Next(0,2);
+            int randomNumber = random.Next(0, 2);
             //Check if laser collided with enemy
             foreach (Actor enemy in enemies)
             {
@@ -37,9 +37,9 @@ namespace cse210_batter_csharp
                 {
                     _audio.PlaySound(Constants.SOUND_EXPLODE);
                     enemyToRemove = enemy;
-                    laser.SetVelocity(new Point (0,0));
+                    laser.SetVelocity(new Point(0, 0));
                     laser.SetImage(Constants.NULL_IMAGE);
-                    laser.SetPosition(new Point (x_ship,y_ship));
+                    laser.SetPosition(new Point(x_ship, y_ship));
                 }
                 else if (endCollision)
                 {

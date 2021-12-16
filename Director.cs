@@ -19,8 +19,6 @@ namespace cse210_batter_csharp
         private Dictionary<string, List<Actor>> _cast;
         private Dictionary<string, List<Action>> _script;
 
-        
-
         public Director(Dictionary<string, List<Actor>> cast, Dictionary<string, List<Action>> script)
         {
             _cast = cast;

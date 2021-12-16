@@ -3,7 +3,7 @@ using cse210_batter_csharp.Services;
 using cse210_batter_csharp.Casting;
 using cse210_batter_csharp.Scripting;
 using System.Collections.Generic;
-using Raylib_cs; 
+using Raylib_cs;
 
 namespace cse210_batter_csharp
 {
@@ -20,7 +20,7 @@ namespace cse210_batter_csharp
             int y_position = 0;
             for (int i = 0; i < 10; i++)
             {
-                int randint = randomNumber.Next(1,4);
+                int randint = randomNumber.Next(1, 4);
                 int randomVelocity = randomNumber.Next(4, 12);
                 if (x_position > 800)
                 {
@@ -32,14 +32,14 @@ namespace cse210_batter_csharp
                     Enemy enemy = new Enemy(x_position, y_position);
                     cast["enemies"].Add(enemy);
                     x_position += 150;
-                    enemy.SetVelocity(new Point (0, randomVelocity));
+                    enemy.SetVelocity(new Point(0, randomVelocity));
                 }
                 else
                 {
                     Enemy enemy = new Enemy(x_position, y_position);
                     cast["enemies"].Add(enemy);
                     x_position += 100;
-                    enemy.SetVelocity(new Point (0, randomVelocity));
+                    enemy.SetVelocity(new Point(0, randomVelocity));
                 }
             }
 
@@ -49,8 +49,8 @@ namespace cse210_batter_csharp
             Ship ship = new Ship(250, 550);
             cast["ship"].Add(ship);
 
-            int shipPosition_x = ship.GetX() -20;
-            int shipPosition_y = ship.GetY()-20;
+            int shipPosition_x = ship.GetX() - 20;
+            int shipPosition_y = ship.GetY() - 20;
 
             cast["lasers"] = new List<Actor>();
             Laser laser = new Laser(shipPosition_x, shipPosition_y);
